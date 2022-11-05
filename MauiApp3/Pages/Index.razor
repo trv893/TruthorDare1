@@ -1,0 +1,98 @@
+﻿@page "/"
+
+<div class="container text-center">
+    <div class="row pt-4">
+        <div class="col-2">
+        </div>
+        <div class="col-3">
+            <HxButton Text="Truth" Size="ButtonSize.Large" Color="ThemeColor.Primary"></HxButton>
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-3">
+            <HxButton Text="Dare" Size="ButtonSize.Large" Color="ThemeColor.Primary"></HxButton>
+        </div>
+        <div class="col-2">
+        </div>
+    </div>
+</div>
+
+<div class="container text-center" style="height: 195px">
+    <div class="row pt-2">
+        <div class="col-1">
+        </div>
+        <div class="col-10">
+            <HxInputTextArea Label="Type Challenge Here..." @bind-Value="@userChallengeInput" style="height:120px" CssClass="my-3" />
+        </div>
+        <div class="col-1">
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-evenly">
+
+        <HxButton 
+            Text="Easy" 
+            Size="ButtonSize.Regular" 
+            Color="ThemeColor.Primary"
+            Tooltip="Challenges involving 1st-2nd base">
+        </HxButton>
+
+        <HxButton Text="Medium" Size="ButtonSize.Regular" Color="ThemeColor.Primary"></HxButton>
+
+        <HxButton Text="Hard" Size="ButtonSize.Regular" Color="ThemeColor.Primary"></HxButton>
+
+</div>
+
+<HxInputText @bind-Value="inputTextContent" Label="Name" />
+
+InputText content: @inputTextContent
+
+<HxChipList Chips="@chips" />
+@*<div class="container text-center">
+    <div class="row pt-4">
+        <div class="col-2">
+        </div>
+        <div class="col-2">
+            <HxButton Text="Easy" Size="ButtonSize.Regular" Color="ThemeColor.Primary"></HxButton>
+        </div>
+        <div class="col-1">
+        </div>
+        <div class="col-2">
+            <HxButton Text="Medium" Size="ButtonSize.Regular" Color="ThemeColor.Primary"></HxButton>
+        </div>
+        <div class="col-1">
+        </div>
+        <div class="col-2">
+            <HxButton Text="Hard" Size="ButtonSize.Regular" Color="ThemeColor.Primary"></HxButton>
+        </div>
+        <div class="col-2">
+        </div>
+    </div>
+</div>
+*@
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+
+@code
+{
+    private string userChallengeInput;
+
+    private ChipItem[] chips =
+    {
+        new() { ChipTemplate = GetRenderFragment("one"), Removable = true },
+        new() { ChipTemplate = GetRenderFragment("two") },
+        new() { ChipTemplate = GetRenderFragment("three") }
+    };
+
+    private static RenderFragment GetRenderFragment(string text) => builder =>
+    {
+        builder.AddContent(1, text);
+    };
+    private string inputTextContent;
+}
+
